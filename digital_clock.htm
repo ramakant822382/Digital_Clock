@@ -1,35 +1,41 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital_Clock</title>
     <link rel="stylesheet" href="/digital.css">
+  </head>
+  <body>
+   <div id="bg"></div>
+   <div class="cen">
+    <div id="clock"></div>
+   </div>
+  </body>
+  <script>
+    setInterval(showTime, 1000);
+    function showTime() {
+      let time = new Date();
+      let hour = time.getHours();
+      let min = time.getMinutes();
+      let sec = time.getSeconds();
+      let am_pm = "AM";
+      if (hour > 12) {
+        hour -= 12;
+        am_pm = "PM";
+      }
 
-</head>
-<body>
- <main>
-<div class="box" id="clock">
-<ul>
-    <li>12</li>
-    <li>:</li>
-    <li>15</li>
-    <li>:</li>
-    <li>12</li>
-    <li>:</li>
-    <li>PM</li>
-</ul>
-</div>
-
-<script>
-
-// var a=new Date()
-// document.getElementById("clock").innerHTML=a
-
-</script>
-
- </main>
-</body>
+      if (hour == 0) {
+        hr -= 12;
+        am_pm = "AM";
+      }
+      hour = hour < 10 ? "0" + hour : hour;
+      min = min < 10 ? "0" + min : min;
+      sec = sec < 10 ? "0" + sec : sec;
+      let currentTime = hour + ":" + min + ":" + sec + am_pm;
+      document.getElementById("clock").innerHTML = currentTime;
+    }
+    showTime();
+  </script>
 </html>
